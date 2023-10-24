@@ -6,6 +6,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.time.Instant;
 
+import static org.springframework.http.HttpStatus.*;
+
 @Service
 @RequiredArgsConstructor
 public class TicketService {
@@ -26,13 +28,19 @@ public class TicketService {
         Ticket ticket = repository.findFirstByOrderByCreated();
 
         if (ticket == null) {
-            throw new ResponseStatusException(
-                    org.springframework.http.HttpStatus.NOT_FOUND,
-                    "No tickets found");
+            throw new ResponseStatusException(NOT_FOUND, "No tickets found");
         }
 
         return TicketDtoMapper.convertFrom(ticket, 0);
     }
 
+    public void deleteFirst(){
+        Ticket ticket = repository.findFirstByOrderByCreated();
 
+        if (ticket == null) {
+            throw new ResponseStatusException(NOT_FOUND, "No tickets found");
+        }
+
+        repository.delete(ticket);
+    }
 }

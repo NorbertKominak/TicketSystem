@@ -20,9 +20,9 @@ public class TicketApi {
     public TicketDto getFirst() {
         return service.getFirst();
     }
-//
-//    @DeleteMapping("/first")
-//    public void deleteFirst() {
-//
-//    }
+
+    @DeleteMapping("/first")
+    public void deleteFirst() {
+        service.deleteFirst();
+    }
 }
