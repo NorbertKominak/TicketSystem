@@ -1,4 +1,4 @@
-package cz.moneta.TicketSystem;
+package cz.moneta.ticket.system;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
