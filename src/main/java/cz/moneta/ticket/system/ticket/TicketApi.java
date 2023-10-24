@@ -16,13 +16,13 @@ public class TicketApi {
         return service.create();
     }
 
-    @GetMapping("/first")
-    public TicketDto getFirst() {
-        return service.getFirst();
+    @GetMapping("/current")
+    public TicketDto getCurrent() {
+        return service.getCurrent();
     }
 
-    @DeleteMapping("/first")
-    public void deleteFirst() {
-        service.deleteFirst();
+    @DeleteMapping("/current")
+    public void deleteCurrent() {
+        service.deleteCurrent();
     }
 }

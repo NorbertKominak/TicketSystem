@@ -24,7 +24,7 @@ public class TicketService {
         return TicketDtoMapper.convertFrom(ticket, repository.count() - 1);
     }
 
-    public TicketDto getFirst() {
+    public TicketDto getCurrent() {
         Ticket ticket = repository.findFirstByOrderByCreated();
 
         if (ticket == null) {
@@ -34,7 +34,7 @@ public class TicketService {
         return TicketDtoMapper.convertFrom(ticket, 0);
     }
 
-    public void deleteFirst(){
+    public void deleteCurrent(){
         Ticket ticket = repository.findFirstByOrderByCreated();
 
         if (ticket == null) {
