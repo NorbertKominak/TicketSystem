@@ -16,10 +16,10 @@ public class TicketApi {
         return service.create();
     }
 
-//    @GetMapping("/first")
-//    public TicketDto getFirst() {
-//
-//    }
+    @GetMapping("/first")
+    public TicketDto getFirst() {
+        return service.getFirst();
+    }
 //
 //    @DeleteMapping("/first")
 //    public void deleteFirst() {

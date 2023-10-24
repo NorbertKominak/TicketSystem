@@ -2,6 +2,7 @@ package cz.moneta.ticket.system.ticket;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.Instant;
 
@@ -20,4 +21,18 @@ public class TicketService {
 
         return TicketDtoMapper.convertFrom(ticket, repository.count() - 1);
     }
+
+    public TicketDto getFirst() {
+        Ticket ticket = repository.findFirstByOrderByCreated();
+
+        if (ticket == null) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.NOT_FOUND,
+                    "No tickets found");
+        }
+
+        return TicketDtoMapper.convertFrom(ticket, 0);
+    }
+
+
 }
